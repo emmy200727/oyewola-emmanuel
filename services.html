@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Services — Design Alchemy | Emmanuel Oyewola</title>
+  <meta name="description" content="Brand identity, logo design, marketing collateral, and AI consulting services by Emmanuel Oyewola — Design Alchemy, Abuja Nigeria.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .srv-hero { position:relative;z-index:2;padding:9rem 1.5rem 5rem;max-width:1280px;margin:0 auto; }
+    .srv-hero h1 { font-family:'Archivo',sans-serif;font-size:clamp(2.5rem,7vw,5.5rem);font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:1.25rem; }
+
+    .srv-section { position:relative;z-index:2;padding:0 1.5rem 6rem;max-width:1280px;margin:0 auto; }
+
+    .srv-full-card {
+      padding:3rem;display:flex;gap:3rem;align-items:flex-start;
+      margin-bottom:1.5rem;
+      border-left:3px solid var(--gold);
+      border-radius:0 var(--radius) var(--radius) 0;
+      transition:border-color 0.3s,background 0.3s;
+    }
+    .srv-full-card:hover { background:rgba(212,175,55,0.04); }
+
+    .srv-full-icon {
+      width:60px;height:60px;border-radius:1rem;
+      background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);
+      display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;
+      transition:background 0.3s;
+    }
+    .srv-full-card:hover .srv-full-icon { background:var(--gold); color:var(--bg); }
+    .srv-full-icon svg { width:26px;height:26px; }
+
+    .srv-full-body { flex:1; }
+    .srv-full-name { font-family:'Archivo',sans-serif;font-size:1.4rem;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.5rem; }
+    .srv-full-desc { font-size:0.88rem;color:rgba(250,250,250,0.55);line-height:1.8;font-weight:300;margin-bottom:1.25rem; }
+    .srv-full-list { display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1.5rem; }
+    .srv-full-list-item {
+      display:flex;align-items:center;gap:0.6rem;
+      font-size:0.78rem;color:rgba(250,250,250,0.6);
+    }
+    .srv-full-list-item::before { content:'✦';color:var(--gold);font-size:0.5rem;flex-shrink:0; }
+    .srv-full-price { display:flex;align-items:center;gap:1rem;flex-wrap:wrap; }
+    .srv-full-price-label { font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted); }
+    .srv-full-price-val { font-family:'Archivo',sans-serif;font-weight:700;color:var(--gold-light);font-size:1.1rem; }
+
+    /* Process */
+    .process-section { position:relative;z-index:2;padding:5rem 1.5rem;background:rgba(13,13,15,0.5);border-top:1px solid var(--border-subtle); }
+    .process-inner { max-width:1280px;margin:0 auto; }
+    .process-steps { display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3rem;position:relative; }
+    .process-steps::before {
+      content:'';position:absolute;top:24px;left:10%;right:10%;
+      height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);
+      opacity:0.2;
+    }
+    .proc-step { text-align:center;padding:0 1rem;position:relative; }
+    .proc-num {
+      width:48px;height:48px;border-radius:50%;
+      border:1px solid rgba(212,175,55,0.3);
+      background:var(--bg);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Archivo',sans-serif;font-weight:700;font-size:0.85rem;color:var(--gold);
+      margin:0 auto 1rem;
+      transition:background 0.3s,border-color 0.3s;
+    }
+    .proc-step:hover .proc-num { background:var(--gold);color:var(--bg);border-color:var(--gold); }
+    .proc-title { font-family:'Archivo',sans-serif;font-weight:700;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.4rem; }
+    .proc-text { font-size:0.72rem;color:rgba(250,250,250,0.45);line-height:1.6; }
+
+    /* FAQ */
+    .faq-section { position:relative;z-index:2;padding:6rem 1.5rem;max-width:1280px;margin:0 auto; }
+    .faq-item { border-bottom:1px solid var(--border-subtle); }
+    .faq-q {
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.5rem 0;cursor:pointer;
+      font-family:'Archivo',sans-serif;font-size:1rem;font-weight:600;
+      transition:color 0.25s;gap:1rem;
+    }
+    .faq-q:hover { color:var(--gold); }
+    .faq-icon { flex-shrink:0;width:24px;height:24px;border:1px solid rgba(255,255,255,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;line-height:1;transition:transform 0.35s,background 0.25s,border-color 0.25s; }
+    .faq-item.open .faq-icon { transform:rotate(45deg);background:rgba(212,175,55,0.1);border-color:var(--gold);color:var(--gold); }
+    .faq-a { max-height:0;overflow:hidden;transition:max-height 0.5s var(--transition),padding 0.35s; }
+    .faq-item.open .faq-a { max-height:300px;padding-bottom:1.5rem; }
+    .faq-a p { font-size:0.85rem;color:rgba(250,250,250,0.5);line-height:1.8;font-weight:300; }
+
+    @media(max-width:900px) {
+      .srv-full-card { flex-direction:column;gap:1.5rem;padding:2rem; }
+      .process-steps { grid-template-columns:1fr 1fr;gap:2rem; }
+      .process-steps::before { display:none; }
+    }
+    @media(max-width:600px) { .process-steps { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div class="scroll-bar"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 1078 1078" fill="none">
+        <rect x="3" y="3" width="1072" height="1072" rx="100" stroke="#D4AF37" stroke-width="8" fill="transparent"/>
+        <path fill="#FAFAFA" d="M282.19,177.56l-55.04,629.16h224.27c71.6,0,97.11-26.85,103.56-100.56l17.89-204.44c1.91-21.81-7.44-38.78-29.25-38.78h0c-21.81,0-30.61,18.91-32.52,40.71-2.7,30.82-15.21,173.81-17.9,204.62-1.91,21.81-21.13,39.48-42.94,39.48h-105.29c-21.81,0-37.94-17.68-36.03-39.48l36.48-416.96c1.91-21.81,21.13-39.48,42.94-39.48h85.02c19.21,0,36.14-15.57,37.82-34.78h0c1.91-21.81-14.22-39.48-36.03-39.48h-192.98Z"/>
+        <path fill="#D4AF37" d="M539.08,201.95l-17.8,203.46c-1.56,17.84,11.67,32.28,29.52,32.2h0c17.77-.07,33.39-14.52,34.9-32.29l11.05-130.11c1.51-17.82,17.21-32.29,35.03-32.29l115.8.02c17.78,0,30.94,14.42,29.38,32.2l-17.67,201.99c-1.56,17.79-17.24,32.2-35.02,32.2h-76.68c-17.79,0-33.47,14.42-35.02,32.2l-.44,5.08c-1.56,17.79,11.6,32.2,29.39,32.2h76.68c17.79,0,30.94,14.42,29.39,32.2l-21.17,241.99c-1.56,17.79,11.6,32.2,29.39,32.2h38.34l62.6-715.5h-282.62c-17.79,0-33.47,14.42-35.02,32.2Z"/>
+      </svg>
+      <div class="nav-logo-text"><span class="brand">Design Alchemy</span><span class="sub">Emmanuel Oyewola</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li><li><a href="services.html" class="active">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-mute" id="mute-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>
+      <a href="contact.html" class="btn-hire">Hire Me</a>
+      <button class="hamburger" id="menu-btn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get Free Audit</a>
+  </div>
+
+  <section class="srv-hero">
+    <span class="section-label reveal">02 / Services</span>
+    <h1 class="reveal delay-1">SYSTEMATIC<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light),#C5A880);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">ALCHEMY</span></h1>
+    <p class="reveal delay-2" style="font-size:0.95rem;color:rgba(250,250,250,0.5);max-width:520px;line-height:1.75;font-weight:300;">Tailored design solutions engineered to elevate your brand, boost conversion rates, and command premium attention in every market you enter.</p>
+  </section>
+
+  <!-- Services List -->
+  <section class="srv-section">
+    <!-- Brand Strategy & Identity -->
+    <div class="srv-full-card card reveal">
+      <div class="srv-full-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 1 0 0 14.14"/></svg>
+      </div>
+      <div class="srv-full-body">
+        <div class="srv-full-name">Brand Strategy &amp; Identity</div>
+        <div class="srv-full-desc">Your brand is not your logo — it's the complete emotional experience your audience has with your business. I build comprehensive, scalable brand systems that communicate authority, generate trust, and drive conversions across every customer touchpoint.</div>
+        <div class="srv-full-list">
+          <div class="srv-full-list-item">Logo design (primary, secondary, favicon variants)</div>
+          <div class="srv-full-list-item">Comprehensive brand guideline booklet</div>
+          <div class="srv-full-list-item">Custom typography pairing &amp; color system</div>
+          <div class="srv-full-list-item">Business cards, letterheads &amp; stationery</div>
+          <div class="srv-full-list-item">Brand application mockups</div>
+        </div>
+        <div class="srv-full-price">
+          <span class="srv-full-price-label">Starting from</span>
+          <span class="srv-full-price-val">₦150,000 / $250</span>
+          <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem;font-size:0.65rem;">Get Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marketing Collateral -->
+    <div class="srv-full-card card reveal delay-1">
+      <div class="srv-full-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div class="srv-full-body">
+        <div class="srv-full-name">Marketing &amp; Print Collateral</div>
+        <div class="srv-full-desc">From a scroll-stopping social media post to a beautifully printed roll-up banner that dominates trade show floors — I create high-impact visual collateral that converts attention into action.</div>
+        <div class="srv-full-list">
+          <div class="srv-full-list-item">Social media graphics (posts, stories, covers)</div>
+          <div class="srv-full-list-item">Event flyers &amp; promotional posters</div>
+          <div class="srv-full-list-item">Roll-up banners &amp; exhibition materials</div>
+          <div class="srv-full-list-item">Brochures &amp; company profiles</div>
+          <div class="srv-full-list-item">Menu designs &amp; food display graphics</div>
+        </div>
+        <div class="srv-full-price">
+          <span class="srv-full-price-label">Starting from</span>
+          <span class="srv-full-price-val">₦50,000 / $100</span>
+          <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem;font-size:0.65rem;">Get Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media Management -->
+    <div class="srv-full-card card reveal delay-2">
+      <div class="srv-full-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5z"/><circle cx="12" cy="12" r="3"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </div>
+      <div class="srv-full-body">
+        <div class="srv-full-name">Social Media Design Retainer</div>
+        <div class="srv-full-desc">Consistent, premium visual content published weekly on your social channels. I create branded content calendars that keep your audience engaged and your brand top-of-mind every single week.</div>
+        <div class="srv-full-list">
+          <div class="srv-full-list-item">Weekly branded post designs (12–20 posts/month)</div>
+          <div class="srv-full-list-item">Story templates &amp; highlights covers</div>
+          <div class="srv-full-list-item">Seasonal &amp; campaign special graphics</div>
+          <div class="srv-full-list-item">Caption strategy &amp; content planning</div>
+        </div>
+        <div class="srv-full-price">
+          <span class="srv-full-price-label">Monthly retainer from</span>
+          <span class="srv-full-price-val">₦80,000 / $140</span>
+          <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem;font-size:0.65rem;">Get Quote</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Strategy -->
+    <div class="srv-full-card card reveal delay-3">
+      <div class="srv-full-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v8M8 12h8"/></svg>
+      </div>
+      <div class="srv-full-body">
+        <div class="srv-full-name">AI Strategy &amp; Design Automation</div>
+        <div class="srv-full-desc">I integrate state-of-the-art AI tools into your creative workflow to dramatically accelerate output quality and speed. Perfect for growing brands that need consistent, premium creative at scale.</div>
+        <div class="srv-full-list">
+          <div class="srv-full-list-item">Custom AI image generation pipelines (Midjourney)</div>
+          <div class="srv-full-list-item">Prompt engineering frameworks for your team</div>
+          <div class="srv-full-list-item">AI-assisted brand asset generation systems</div>
+          <div class="srv-full-list-item">Creative workflow audit &amp; automation plan</div>
+        </div>
+        <div class="srv-full-price">
+          <span class="srv-full-price-label">Starting from</span>
+          <span class="srv-full-price-val">₦200,000 / $350</span>
+          <a href="contact.html" class="btn-primary" style="padding:0.6rem 1.25rem;font-size:0.65rem;">Get Quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process-section">
+    <div class="process-inner">
+      <div style="text-align:center;margin-bottom:0.5rem;">
+        <span class="section-label">How I Work</span>
+        <h2 class="section-title reveal">THE ALCHEMY<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">PROCESS</span></h2>
+      </div>
+      <div class="process-steps">
+        <div class="proc-step reveal"><div class="proc-num">01</div><div class="proc-title">Discovery</div><div class="proc-text">Deep-dive into your business goals, target audience, and competitive landscape.</div></div>
+        <div class="proc-step reveal delay-1"><div class="proc-num">02</div><div class="proc-title">Strategy</div><div class="proc-text">Build a design brief and visual direction rooted in brand psychology.</div></div>
+        <div class="proc-step reveal delay-2"><div class="proc-num">03</div><div class="proc-title">Creation</div><div class="proc-text">Design 3 distinct concepts — you choose the direction that resonates most.</div></div>
+        <div class="proc-step reveal delay-3"><div class="proc-num">04</div><div class="proc-title">Refinement</div><div class="proc-text">2 rounds of revisions to perfect every detail until you're 100% satisfied.</div></div>
+        <div class="proc-step reveal delay-4"><div class="proc-num">05</div><div class="proc-title">Delivery</div><div class="proc-text">Final files in all formats needed: AI, PDF, PNG, SVG, and usage guidelines.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title reveal" style="margin-bottom:3rem;">COMMON<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">QUESTIONS</span></h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">How long does a brand identity project typically take? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><p>A complete brand identity system typically takes 7–14 business days from your brief submission to final delivery. Rush delivery (3–5 days) is available at an additional fee.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you offer payment plans? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><p>Yes. I require a 50% deposit before starting any project, with the remaining balance due upon completion and before final file delivery. Flexible installment plans are available for retainer services.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">How many revision rounds are included? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><p>All packages include 2 rounds of revisions. Each additional revision round is charged at 15% of the total project fee to ensure quality and mutual respect for creative time.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What file formats will I receive? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><p>You receive all source files (AI, PSD) and final export formats (PNG, SVG, PDF, JPEG) optimized for both print and digital use at all required resolutions and sizes.</p></div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Can you work with businesses outside Nigeria? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><p>Absolutely. I work with clients globally. All project communication is handled via WhatsApp, email, or video call. International payments accepted via USD bank transfer, PayPal, or crypto.</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="position:relative;z-index:2;padding:5rem 1.5rem;text-align:center;background:rgba(13,13,15,0.5);border-top:1px solid var(--border-subtle);">
+    <div style="max-width:600px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
+      <span class="section-label">Ready?</span>
+      <h2 class="section-title reveal">START YOUR<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">PROJECT</span></h2>
+      <p class="reveal delay-1" style="font-size:0.88rem;color:rgba(250,250,250,0.5);line-height:1.75;font-weight:300;">Book a free discovery call or send your brief. I'll respond within 24 hours with a custom proposal tailored to your goals and budget.</p>
+      <div class="reveal delay-2" style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+        <a href="contact.html" class="btn-primary">Start Your Project</a>
+        <a href="contact.html" class="btn-outline">Get Free Brand Audit</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><div class="brand">Design Alchemy</div><div class="tagline">Transforming Ideas Into Reality</div></div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Design Alchemy. All rights reserved.</span>
+        <span>Abuja, Nigeria · oyewolaemmanuel2007@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+</html>

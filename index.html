@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emmanuel Oyewola — Creative Director & Brand Strategist | Design Alchemy</title>
+  <meta name="description" content="Premium portfolio of Emmanuel Oyewola, Creative Director of Design Alchemy. Brand identity, logo design, graphic strategy — based in Abuja, Nigeria.">
+  <meta property="og:title" content="Emmanuel Oyewola — Creative Director | Design Alchemy">
+  <meta property="og:description" content="Transforming ideas into reality through immersive brand design.">
+  <meta property="og:image" content="./Oyewola Emmanuel Anjolaoluwa.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ── HOME PAGE SPECIFIC ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+      padding: 7rem 1.5rem 4rem;
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 9999px;
+      padding: 0.45rem 1rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .hero-pill-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } }
+
+    .hero-name {
+      font-family: 'Archivo', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name .line2 {
+      background: linear-gradient(135deg, var(--gold) 20%, var(--gold-light) 60%, #C5A880);
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+    }
+    .hero-typewriter {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: rgba(250,250,250,0.7);
+      margin-bottom: 1.5rem;
+      height: 1.8em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #typewriter {
+      color: var(--gold);
+      font-weight: 500;
+      border-right: 2px solid var(--gold);
+      padding-right: 3px;
+      animation: caret 0.75s step-end infinite;
+    }
+    @keyframes caret { 50% { border-color: transparent; } }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: rgba(250,250,250,0.55);
+      line-height: 1.75;
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+    /* Portrait Frame */
+    .hero-portrait {
+      flex-shrink: 0;
+      position: relative;
+    }
+    .portrait-frame {
+      width: 300px;
+      height: 390px;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,0.15);
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .portrait-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: brightness(0.93) contrast(1.05);
+      transition: transform 0.6s ease;
+    }
+    .portrait-frame:hover img { transform: scale(1.04); }
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(7,7,8,0.7) 0%, transparent 50%);
+    }
+    .portrait-deco-ring {
+      position: absolute;
+      border: 1px dashed rgba(212,175,55,0.12);
+      border-radius: 50%;
+      animation: spin 90s linear infinite;
+      pointer-events: none;
+    }
+    .portrait-deco-ring:nth-child(1) { width: 380px; height: 380px; top: 50%; left: 50%; translate: -50% -50%; }
+    .portrait-deco-ring:nth-child(2) { width: 450px; height: 450px; top: 50%; left: 50%; translate: -50% -50%; animation-direction: reverse; animation-duration: 120s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .online-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: -1rem;
+      background: rgba(7,7,8,0.85);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 0.75rem;
+      padding: 0.5rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,250,250,0.6);
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .online-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      gap: 3rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 1rem;
+    }
+    .stat-num {
+      font-family: 'Archivo', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Featured Work strip */
+    .featured-strip {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 0;
+    }
+    .featured-strip-head {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+    .proj-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .proj-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/5;
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: transform 0.4s var(--transition), box-shadow 0.4s;
+    }
+    .proj-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    .proj-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease, filter 0.4s;
+      filter: brightness(0.8);
+    }
+    .proj-card:hover img { transform: scale(1.06); filter: brightness(0.65); }
+    .proj-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(7,7,8,0.95) 0%, rgba(7,7,8,0.6) 60%, transparent 100%);
+      transform: translateY(30%);
+      transition: transform 0.4s var(--transition);
+    }
+    .proj-card:hover .proj-info { transform: translateY(0); }
+    .proj-client {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .proj-title {
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .proj-desc {
+      font-size: 0.78rem;
+      color: rgba(250,250,250,0.55);
+      line-height: 1.6;
+      font-weight: 300;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .proj-card:hover .proj-desc { opacity: 1; }
+
+    /* Services teaser */
+    .services-teaser {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 0;
+      background: rgba(13,13,15,0.5);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .srv-grid {
+      max-width: 1280px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .srv-card {
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .srv-icon {
+      width: 48px; height: 48px;
+      border-radius: 0.75rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold);
+      transition: background 0.3s;
+    }
+    .srv-card:hover .srv-icon { background: var(--gold); color: var(--bg); }
+    .srv-icon svg { width: 22px; height: 22px; }
+    .srv-name {
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .srv-desc { font-size: 0.83rem; color: rgba(250,250,250,0.5); line-height: 1.7; font-weight: 300; }
+    .srv-price {
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .srv-price strong { color: var(--gold-light); font-size: 0.9rem; letter-spacing: 0; font-family: 'Archivo', sans-serif; }
+
+    /* CTA Banner */
+    .cta-banner {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+    .cta-banner-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .cta-banner-title {
+      font-family: 'Archivo', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-portrait { display: none; }
+      .proj-grid { grid-template-columns: repeat(2, 1fr); }
+      .srv-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .stats-row { gap: 1.5rem; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <svg class="pre-logo" viewBox="0 0 1078 1078" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="3" width="1072" height="1072" rx="60" stroke="#D4AF37" stroke-width="6" fill="transparent"/>
+      <path fill="#FAFAFA" d="M282.19,177.56l-55.04,629.16h224.27c71.6,0,97.11-26.85,103.56-100.56l17.89-204.44c1.91-21.81-7.44-38.78-29.25-38.78h0c-21.81,0-30.61,18.91-32.52,40.71-2.7,30.82-15.21,173.81-17.9,204.62-1.91,21.81-21.13,39.48-42.94,39.48h-105.29c-21.81,0-37.94-17.68-36.03-39.48l36.48-416.96c1.91-21.81,21.13-39.48,42.94-39.48h85.02c19.21,0,36.14-15.57,37.82-34.78h0c1.91-21.81-14.22-39.48-36.03-39.48h-192.98Z"/>
+      <path fill="#D4AF37" d="M539.08,201.95l-17.8,203.46c-1.56,17.84,11.67,32.28,29.52,32.2h0c17.77-.07,33.39-14.52,34.9-32.29l11.05-130.11c1.51-17.82,17.21-32.29,35.03-32.29l115.8.02c17.78,0,30.94,14.42,29.38,32.2l-17.67,201.99c-1.56,17.79-17.24,32.2-35.02,32.2h-76.68c-17.79,0-33.47,14.42-35.02,32.2l-.44,5.08c-1.56,17.79,11.6,32.2,29.39,32.2h76.68c17.79,0,30.94,14.42,29.39,32.2l-21.17,241.99c-1.56,17.79,11.6,32.2,29.39,32.2h38.34l62.6-715.5h-282.62c-17.79,0-33.47,14.42-35.02,32.2Z"/>
+    </svg>
+    <div class="pre-title">Design Alchemy</div>
+    <div class="pre-tagline">Transforming Ideas Into Reality</div>
+    <div class="pre-bar-wrap"><div class="pre-bar" id="pre-bar"></div></div>
+    <div class="pre-pct" id="pre-pct">0%</div>
+  </div>
+
+  <!-- Particles -->
+  <canvas id="particle-canvas"></canvas>
+  <div class="scroll-bar"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 1078 1078" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="3" y="3" width="1072" height="1072" rx="100" stroke="#D4AF37" stroke-width="8" fill="transparent"/>
+        <path fill="#FAFAFA" d="M282.19,177.56l-55.04,629.16h224.27c71.6,0,97.11-26.85,103.56-100.56l17.89-204.44c1.91-21.81-7.44-38.78-29.25-38.78h0c-21.81,0-30.61,18.91-32.52,40.71-2.7,30.82-15.21,173.81-17.9,204.62-1.91,21.81-21.13,39.48-42.94,39.48h-105.29c-21.81,0-37.94-17.68-36.03-39.48l36.48-416.96c1.91-21.81,21.13-39.48,42.94-39.48h85.02c19.21,0,36.14-15.57,37.82-34.78h0c1.91-21.81-14.22-39.48-36.03-39.48h-192.98Z"/>
+        <path fill="#D4AF37" d="M539.08,201.95l-17.8,203.46c-1.56,17.84,11.67,32.28,29.52,32.2h0c17.77-.07,33.39-14.52,34.9-32.29l11.05-130.11c1.51-17.82,17.21-32.29,35.03-32.29l115.8.02c17.78,0,30.94,14.42,29.38,32.2l-17.67,201.99c-1.56,17.79-17.24,32.2-35.02,32.2h-76.68c-17.79,0-33.47,14.42-35.02,32.2l-.44,5.08c-1.56,17.79,11.6,32.2,29.39,32.2h76.68c17.79,0,30.94,14.42,29.39,32.2l-21.17,241.99c-1.56,17.79,11.6,32.2,29.39,32.2h38.34l62.6-715.5h-282.62c-17.79,0-33.47,14.42-35.02,32.2Z"/>
+      </svg>
+      <div class="nav-logo-text">
+        <span class="brand">Design Alchemy</span>
+        <span class="sub">Emmanuel Oyewola</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-mute" id="mute-btn" aria-label="Toggle sound">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+      </button>
+      <a href="contact.html" class="btn-hire">Hire Me</a>
+      <button class="hamburger" id="menu-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get Free Audit</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill reveal">
+          <span class="hero-pill-dot"></span>
+          Brand Architect &amp; Graphic Alchemist — Abuja, Nigeria
+        </div>
+        <h1 class="hero-name reveal delay-1">
+          EMMANUEL<br>
+          <span class="line2">OYEWOLA</span>
+        </h1>
+        <div class="hero-typewriter reveal delay-2">
+          Helping businesses build
+          <span id="typewriter" data-words="scalable brand systems.|unforgettable identities.|high-converting visuals.|luxury aesthetics."></span>
+        </div>
+        <p class="hero-desc reveal delay-3">
+          Most design projects look pretty but fail to attract clients. I synthesize high-end visual theory with brand strategy and AI-driven workflows to build identities that generate real business results.
+        </p>
+        <div class="hero-ctas reveal delay-4">
+          <a href="contact.html" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            Get Free Brand Audit
+          </a>
+          <a href="projects.html" class="btn-outline">View Projects</a>
+        </div>
+
+        <div class="stats-row reveal delay-5">
+          <div>
+            <div class="stat-num counter" data-target="50">0+</div>
+            <div class="stat-label">Projects Done</div>
+          </div>
+          <div>
+            <div class="stat-num counter" data-target="20">0+</div>
+            <div class="stat-label">Clients Served</div>
+          </div>
+          <div>
+            <div class="stat-num counter" data-target="2">0+</div>
+            <div class="stat-label">Years Active</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-portrait reveal-right">
+        <div class="portrait-deco-ring"></div>
+        <div class="portrait-deco-ring"></div>
+        <div class="portrait-frame tilt" id="portrait-frame">
+          <img src="./Oyewola Emmanuel Anjolaoluwa.png" alt="Emmanuel Oyewola — Creative Director">
+          <div class="online-badge">
+            <span class="online-dot"></span>
+            Available for Work
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted by marquee -->
+  <div style="position:relative;z-index:2;padding:1.5rem 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);">
+    <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;margin-bottom:0.75rem;">
+      <span style="font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Brands I've worked with</span>
+    </div>
+    <div class="marquee-wrapper">
+      <div class="marquee-track" style="color:rgba(250,250,250,0.12);font-family:'Archivo',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;gap:3rem;">
+        <span>Aventro X</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Lapeq Industries</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Hue2Max</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Jimmy Gadgets</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Rivo Rider</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Oby's Kitchen</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>RCCG Global</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Datalab Systems</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Brandfest</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+      </div>
+      <div class="marquee-track" aria-hidden="true" style="color:rgba(250,250,250,0.12);font-family:'Archivo',sans-serif;font-weight:700;font-size:0.8rem;letter-spacing:0.25em;text-transform:uppercase;gap:3rem;">
+        <span>Aventro X</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Lapeq Industries</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Hue2Max</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Jimmy Gadgets</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Rivo Rider</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Oby's Kitchen</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>RCCG Global</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Datalab Systems</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+        <span>Brandfest</span><span style="color:var(--gold);opacity:0.3;">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Projects -->
+  <section class="featured-strip">
+    <div class="featured-strip-head">
+      <div>
+        <span class="section-label">03 / Featured Work</span>
+        <h2 class="section-title">SELECTED<br><span class="accent">PROJECTS</span></h2>
+      </div>
+      <a href="projects.html" class="btn-outline">View All Projects</a>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card tilt reveal">
+        <img src="./Designs/Aventro X logo.png" alt="Aventro X Identity" loading="lazy" style="object-fit:contain;background:#0d0d10;padding:2rem;">
+        <div class="proj-info">
+          <div class="proj-client">Branding · Logo · AI Tech</div>
+          <div class="proj-title">Aventro X Identity</div>
+          <div class="proj-desc">Reconstructed visual brand system for a high-performance AI software company, driving 35% jump in enterprise registrations.</div>
+        </div>
+      </div>
+      <div class="proj-card tilt reveal delay-1">
+        <img src="./Designs/brandfest.png" alt="Brandfest Campaign" loading="lazy">
+        <div class="proj-info">
+          <div class="proj-client">Flyers · Event · Marketing</div>
+          <div class="proj-title">Brandfest Campaign</div>
+          <div class="proj-desc">Luxury campaign branding that sold out VIP conference seats 2 weeks early with a 42% referral spike.</div>
+        </div>
+      </div>
+      <div class="proj-card tilt reveal delay-2">
+        <img src="./Designs/Lapeq/lapeq 1.png" alt="Lapeq Full Branding" loading="lazy">
+        <div class="proj-info">
+          <div class="proj-client">Full Branding · Print · Web</div>
+          <div class="proj-title">Lapeq Industries</div>
+          <div class="proj-desc">Complete brand system including logos, brochures, social media, and website for this premium security firm.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services teaser -->
+  <section class="services-teaser">
+    <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;text-align:center;">
+      <span class="section-label">What I Offer</span>
+      <h2 class="section-title reveal">SYSTEMATIC<br><span class="accent">ALCHEMY</span></h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card card tilt reveal">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 1 0 0 14.14"/></svg>
+        </div>
+        <div class="srv-name">Brand Strategy &amp; Identity</div>
+        <div class="srv-desc">Custom logos, typography, color systems, and brand books built to separate authority from noise across every touchpoint.</div>
+        <div class="srv-price">From <strong>₦150,000 / $250</strong></div>
+      </div>
+      <div class="srv-card card tilt reveal delay-1">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div class="srv-name">Marketing Collateral</div>
+        <div class="srv-desc">High-converting flyers, social media graphics, roll-up banners, and print-ready stationery that commands premium attention.</div>
+        <div class="srv-price">From <strong>₦50,000 / $100</strong></div>
+      </div>
+      <div class="srv-card card tilt reveal delay-2">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v8M8 12h8"/></svg>
+        </div>
+        <div class="srv-name">AI Strategy &amp; Consulting</div>
+        <div class="srv-desc">Prompt engineering pipelines, automated asset generation, and AI-accelerated creative workflows for your design team.</div>
+        <div class="srv-price">From <strong>₦200,000 / $350</strong></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="services.html" class="btn-outline reveal">See All Services</a>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-banner-inner">
+      <span class="section-label">Ready to start?</span>
+      <h2 class="cta-banner-title reveal">LET'S BUILD<br><span class="accent">SOMETHING BOLD</span></h2>
+      <p class="reveal delay-1" style="color:rgba(250,250,250,0.5);font-size:0.9rem;line-height:1.75;font-weight:300;">Get your free Brand Audit — I'll review your current graphics and messaging and share exactly what to fix, for free.</p>
+      <div class="cta-btns reveal delay-2">
+        <a href="contact.html" class="btn-primary">Get Free Brand Audit</a>
+        <a href="projects.html" class="btn-outline">View Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">Design Alchemy</div>
+          <div class="tagline">Transforming Ideas Into Reality</div>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <a href="https://wa.me/2349030934645" target="_blank" title="WhatsApp" style="width:34px;height:34px;border:1px solid var(--border-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='';this.style.color=''">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+          <a href="mailto:oyewolaemmanuel2007@gmail.com" title="Email" style="width:34px;height:34px;border:1px solid var(--border-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='';this.style.color=''">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" title="Back to top" style="width:34px;height:34px;border:1px solid var(--border-subtle);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-muted);transition:all .25s;" onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='';this.style.color=''">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Design Alchemy. All rights reserved.</span>
+        <span>Abuja, Nigeria · oyewolaemmanuel2007@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Portrait 3D tilt (beyond shared.js) -->
+  <script>
+    const pf = document.getElementById('portrait-frame');
+    if(pf) {
+      pf.addEventListener('mousemove', e => {
+        const r = pf.getBoundingClientRect();
+        const px = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        const py = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        pf.style.transform = `perspective(900px) rotateY(${px*12}deg) rotateX(${-py*12}deg) scale(1.02)`;
+      });
+      pf.addEventListener('mouseleave', () => { pf.style.transform = ''; });
+    }
+  </script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+</html>

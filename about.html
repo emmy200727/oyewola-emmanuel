@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>About — Emmanuel Oyewola | Design Alchemy</title>
+  <meta name="description" content="Learn the story behind Emmanuel Oyewola — creative director, brand strategist and AI enthusiast based in Abuja, Nigeria.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .about-hero {
+      position: relative; z-index: 2;
+      min-height: 60vh; display: flex; align-items: center;
+      padding: 9rem 1.5rem 5rem;
+    }
+    .about-hero-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 380px; gap: 5rem; align-items: center;
+    }
+    .about-hero h1 { font-family:'Archivo',sans-serif; font-size:clamp(2.5rem,6vw,5rem); font-weight:900; text-transform:uppercase; line-height:0.95; margin-bottom:1.5rem; }
+    .about-hero p { font-size:0.95rem; color:rgba(250,250,250,0.55); line-height:1.85; font-weight:300; }
+
+    .portrait-sq {
+      width:100%; aspect-ratio:3/4; border-radius:var(--radius); overflow:hidden;
+      border:1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .portrait-sq img { width:100%;height:100%;object-fit:cover;object-position:top center;filter:brightness(0.92)contrast(1.05); }
+
+    /* Stats strip */
+    .stat-strip {
+      position:relative;z-index:2;
+      background:rgba(13,13,15,0.6);
+      border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);
+      padding:3rem 1.5rem;
+    }
+    .stat-strip-inner { max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem; }
+    .stat-item { text-align:center; }
+    .stat-n { font-family:'Archivo',sans-serif;font-size:3rem;font-weight:900;color:var(--gold);line-height:1; }
+    .stat-l { font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-muted);margin-top:0.35rem; }
+
+    /* Philosophy */
+    .philosophy {
+      position:relative;z-index:2;
+      padding:6rem 1.5rem;
+      max-width:1280px;margin:0 auto;
+    }
+    .phil-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem; }
+    .phil-card {
+      padding:2rem 1.75rem;
+      border-left:2px solid var(--gold);
+      background:rgba(212,175,55,0.03);
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+      transition:border-color 0.3s,background 0.3s;
+    }
+    .phil-card:hover { background:rgba(212,175,55,0.07); }
+    .phil-num { font-family:'Archivo',sans-serif;font-size:2.5rem;font-weight:900;color:rgba(212,175,55,0.2);line-height:1;margin-bottom:0.75rem; }
+    .phil-title { font-family:'Archivo',sans-serif;font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.6rem; }
+    .phil-text { font-size:0.82rem;color:rgba(250,250,250,0.5);line-height:1.75;font-weight:300; }
+
+    /* Skills */
+    .skills-section { position:relative;z-index:2;padding:6rem 1.5rem;background:rgba(13,13,15,0.5);border-top:1px solid var(--border-subtle); }
+    .skills-inner { max-width:1280px;margin:0 auto; }
+    .skill-categories { display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem; }
+    .skill-cat-title { font-family:'Archivo',sans-serif;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--gold);margin-bottom:1.25rem; }
+    .skill-item {
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.75rem 0;border-bottom:1px solid var(--border-subtle);
+      font-size:0.8rem;color:rgba(250,250,250,0.7);
+    }
+    .skill-bar-wrap { width:80px;height:3px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden; }
+    .skill-bar { height:100%;background:var(--gold);border-radius:9999px;transform:scaleX(0);transform-origin:left;transition:transform 0.8s var(--transition) 0.2s; }
+    .skill-item.visible .skill-bar { transform:scaleX(1); }
+
+    /* Timeline */
+    .timeline-section { position:relative;z-index:2;padding:6rem 1.5rem;max-width:1280px;margin:0 auto; }
+    .timeline { margin-top:3rem;position:relative;padding-left:2rem;border-left:1px solid rgba(212,175,55,0.15); }
+    .tl-item { position:relative;padding-bottom:3rem; }
+    .tl-item::before {
+      content:''; position:absolute;
+      left:calc(-2rem - 5px); top:4px;
+      width:11px;height:11px;border-radius:50%;
+      background:var(--bg); border:2px solid var(--gold);
+      transition:background 0.3s;
+    }
+    .tl-item:hover::before { background:var(--gold); }
+    .tl-year { font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);display:inline-block;padding:0.25rem 0.7rem;border-radius:9999px;margin-bottom:0.6rem; }
+    .tl-title { font-family:'Archivo',sans-serif;font-size:1.15rem;font-weight:700;text-transform:uppercase;margin-bottom:0.3rem; }
+    .tl-place { font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:0.6rem; }
+    .tl-desc { font-size:0.83rem;color:rgba(250,250,250,0.5);line-height:1.75;font-weight:300;max-width:560px; }
+
+    @media(max-width:900px) {
+      .about-hero-inner { grid-template-columns:1fr;} .portrait-sq { display:none; }
+      .stat-strip-inner { grid-template-columns:repeat(2,1fr); }
+      .phil-grid { grid-template-columns:1fr; }
+      .skill-categories { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div class="scroll-bar"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 1078 1078" fill="none">
+        <rect x="3" y="3" width="1072" height="1072" rx="100" stroke="#D4AF37" stroke-width="8" fill="transparent"/>
+        <path fill="#FAFAFA" d="M282.19,177.56l-55.04,629.16h224.27c71.6,0,97.11-26.85,103.56-100.56l17.89-204.44c1.91-21.81-7.44-38.78-29.25-38.78h0c-21.81,0-30.61,18.91-32.52,40.71-2.7,30.82-15.21,173.81-17.9,204.62-1.91,21.81-21.13,39.48-42.94,39.48h-105.29c-21.81,0-37.94-17.68-36.03-39.48l36.48-416.96c1.91-21.81,21.13-39.48,42.94-39.48h85.02c19.21,0,36.14-15.57,37.82-34.78h0c1.91-21.81-14.22-39.48-36.03-39.48h-192.98Z"/>
+        <path fill="#D4AF37" d="M539.08,201.95l-17.8,203.46c-1.56,17.84,11.67,32.28,29.52,32.2h0c17.77-.07,33.39-14.52,34.9-32.29l11.05-130.11c1.51-17.82,17.21-32.29,35.03-32.29l115.8.02c17.78,0,30.94,14.42,29.38,32.2l-17.67,201.99c-1.56,17.79-17.24,32.2-35.02,32.2h-76.68c-17.79,0-33.47,14.42-35.02,32.2l-.44,5.08c-1.56,17.79,11.6,32.2,29.39,32.2h76.68c17.79,0,30.94,14.42,29.39,32.2l-21.17,241.99c-1.56,17.79,11.6,32.2,29.39,32.2h38.34l62.6-715.5h-282.62c-17.79,0-33.47,14.42-35.02,32.2Z"/>
+      </svg>
+      <div class="nav-logo-text"><span class="brand">Design Alchemy</span><span class="sub">Emmanuel Oyewola</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html" class="active">About</a></li>
+      <li><a href="projects.html">Projects</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-mute" id="mute-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></button>
+      <a href="contact.html" class="btn-hire">Hire Me</a>
+      <button class="hamburger" id="menu-btn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get Free Audit</a>
+  </div>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="about-hero-inner">
+      <div>
+        <span class="section-label reveal">01 / The Alchemist</span>
+        <h1 class="reveal delay-1">BEYOND<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light),#C5A880);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">AESTHETICS</span></h1>
+        <p class="reveal delay-2" style="margin-bottom:1.25rem;">
+          Hi, I'm <strong style="color:var(--text);">Emmanuel Oyewola</strong> — Creative Director and founder of <strong style="color:var(--gold);">Design Alchemy</strong>, based in Abuja, Nigeria.
+        </p>
+        <p class="reveal delay-3">
+          I don't see design as cosmetic enhancement. I see it as a critical lever of business valuation. By blending core design theory with dynamic visual marketing and modern AI workflows, I construct strategic visual identities that separate professional authority from general noise.
+        </p>
+        <p class="reveal delay-4" style="margin-top:1rem;">
+          Whether designing visual collateral for local growth leaders or global software platforms, my singular target is building identities that build clients.
+        </p>
+        <div class="reveal delay-5" style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="contact.html" class="btn-primary">Work With Me</a>
+          <a href="projects.html" class="btn-outline">View Portfolio</a>
+        </div>
+      </div>
+      <div class="portrait-sq reveal-right">
+        <img src="./Oyewola Emmanuel Anjolaoluwa.png" alt="Emmanuel Oyewola">
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <div class="stat-strip">
+    <div class="stat-strip-inner">
+      <div class="stat-item reveal"><div class="stat-n counter" data-target="50">0+</div><div class="stat-l">Projects Completed</div></div>
+      <div class="stat-item reveal delay-1"><div class="stat-n counter" data-target="20">0+</div><div class="stat-l">Clients Served</div></div>
+      <div class="stat-item reveal delay-2"><div class="stat-n counter" data-target="5">0+</div><div class="stat-l">Industries Served</div></div>
+      <div class="stat-item reveal delay-3"><div class="stat-n counter" data-target="2">0+</div><div class="stat-l">Years Experience</div></div>
+    </div>
+  </div>
+
+  <!-- Philosophy section -->
+  <section class="philosophy">
+    <span class="section-label">Design Principles</span>
+    <h2 class="section-title reveal">THE ALCHEMY<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">FRAMEWORK</span></h2>
+    <div class="phil-grid">
+      <div class="phil-card reveal">
+        <div class="phil-num">01</div>
+        <div class="phil-title">Strategy First</div>
+        <div class="phil-text">Every visual decision is rooted in business objectives. Design without strategy is art. Design with strategy is alchemy.</div>
+      </div>
+      <div class="phil-card reveal delay-1">
+        <div class="phil-num">02</div>
+        <div class="phil-title">Precision Over Decoration</div>
+        <div class="phil-text">Premium doesn't mean loud. It means intentional. Every element earns its space through cognitive design theory and brand psychology.</div>
+      </div>
+      <div class="phil-card reveal delay-2">
+        <div class="phil-num">03</div>
+        <div class="phil-title">AI-Accelerated Quality</div>
+        <div class="phil-text">I integrate cutting-edge AI tools (Midjourney, Claude, ChatGPT) to 10x creative output speed without sacrificing quality or client vision.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills-section">
+    <div class="skills-inner">
+      <span class="section-label">Toolkit</span>
+      <h2 class="section-title reveal">ALCHEMY<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">TOOLS</span></h2>
+      <div class="skill-categories">
+        <div class="reveal">
+          <div class="skill-cat-title">Design</div>
+          <div class="skill-item"><span>Adobe Photoshop</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+          <div class="skill-item"><span>Adobe Illustrator</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+          <div class="skill-item"><span>Figma</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+          <div class="skill-item"><span>Canva Pro</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:95%"></div></div></div>
+        </div>
+        <div class="reveal delay-1">
+          <div class="skill-cat-title">Development</div>
+          <div class="skill-item"><span>HTML5</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+          <div class="skill-item"><span>CSS3</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+          <div class="skill-item"><span>JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+          <div class="skill-item"><span>Responsive Design</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        </div>
+        <div class="reveal delay-2">
+          <div class="skill-cat-title">AI &amp; Automation</div>
+          <div class="skill-item"><span>Midjourney</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:92%"></div></div></div>
+          <div class="skill-item"><span>ChatGPT / Claude</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:90%"></div></div></div>
+          <div class="skill-item"><span>DALL-E</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+          <div class="skill-item"><span>Prompt Engineering</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section">
+    <span class="section-label">Journey</span>
+    <h2 class="section-title reveal">EXPERIENCE &amp;<br><span class="accent" style="background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">ACHIEVEMENTS</span></h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-year">2024 – Present</div>
+        <div class="tl-title">Owner &amp; Creative Director</div>
+        <div class="tl-place">Design Alchemy · Abuja, Nigeria</div>
+        <div class="tl-desc">Managing premium branding operations, creating visual marketing collateral, and collaborating with businesses across Nigeria and internationally to deploy high-impact aesthetic strategies.</div>
+      </div>
+      <div class="tl-item reveal delay-1">
+        <div class="tl-year">2023 – 2024</div>
+        <div class="tl-title">Lead Graphic Designer</div>
+        <div class="tl-place">Freelance Practice · Nigeria</div>
+        <div class="tl-desc">Supervised layout setups, print requirement validation, and visual strategy for various organizations — delivering complete brand systems from concept sketches to final production files.</div>
+      </div>
+      <div class="tl-item reveal delay-2">
+        <div class="tl-year">Achievement</div>
+        <div class="tl-title">Brand Strategist Certification</div>
+        <div class="tl-place">Design &amp; Innovation Academy</div>
+        <div class="tl-desc">Certified in strategic brand development, visual identity construction, and AI-accelerated creative workflow automation.</div>
+      </div>
+      <div class="tl-item reveal delay-3">
+        <div class="tl-year">Achievement</div>
+        <div class="tl-title">First Live Website Delivery</div>
+        <div class="tl-place">Lapeq Industries · lapeq.net</div>
+        <div class="tl-desc">Designed and developed the official website for Lapeq Industries — a premium Nigerian security firm — from brand identity to live deployment.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><div class="brand">Design Alchemy</div><div class="tagline">Transforming Ideas Into Reality</div></div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a href="services.html">Services</a><a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Design Alchemy. All rights reserved.</span>
+        <span>Abuja, Nigeria · oyewolaemmanuel2007@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Skill bar reveal on scroll -->
+  <script>
+    const skillItems = document.querySelectorAll('.skill-item');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }});
+    }, { threshold: 0.3 });
+    skillItems.forEach(i => io.observe(i));
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+</html>

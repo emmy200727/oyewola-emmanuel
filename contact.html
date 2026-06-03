@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contact — Design Alchemy | Emmanuel Oyewola</title>
+  <meta name="description"
+    content="Get in touch with Emmanuel Oyewola — Creative Director, Design Alchemy. Book a free brand audit or start a project. Abuja, Nigeria.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .contact-page {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-hero {
+      padding: 9rem 1.5rem 5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .contact-hero h1 {
+      font-family: 'Archivo', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      margin-bottom: 1.25rem;
+    }
+
+    .contact-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* FORM */
+    .form-card {
+      padding: 3rem;
+      border-radius: var(--radius);
+      background: rgba(13, 13, 15, 0.6);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(16px);
+    }
+
+    .form-title {
+      font-family: 'Archivo', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-sub {
+      font-size: 0.8rem;
+      color: rgba(250, 250, 250, 0.45);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-grid.full {
+      grid-template-columns: 1fr;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .field label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250, 250, 250, 0.5);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(212, 175, 55, 0.4);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+    }
+
+    .field select {
+      appearance: none;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .form-submit {
+      width: 100%;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--bg);
+      padding: 1.1rem 2rem;
+      border-radius: 9999px;
+      transition: background 0.25s, box-shadow 0.25s, transform 0.2s;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .form-submit:hover {
+      background: var(--gold-light);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-notice {
+      font-size: 0.65rem;
+      color: rgba(250, 250, 250, 0.3);
+      text-align: center;
+      margin-top: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* SUCCESS MSG */
+    .form-success {
+      display: none;
+      padding: 2rem;
+      text-align: center;
+      border-radius: var(--radius);
+      background: rgba(34, 197, 94, 0.05);
+      border: 1px solid rgba(34, 197, 94, 0.15);
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-success h3 {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .form-success p {
+      font-size: 0.8rem;
+      color: rgba(250, 250, 250, 0.5);
+      font-weight: 300;
+    }
+
+    /* SIDEBAR */
+    .contact-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-info-card {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .ci-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .ci-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 0.75rem;
+      background: rgba(212, 175, 55, 0.1);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .ci-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .ci-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .ci-value {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+      word-break: break-all;
+    }
+
+    .wa-cta-card {
+      padding: 2rem;
+      background: rgba(37, 211, 102, 0.05);
+      border-color: rgba(37, 211, 102, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .wa-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(37, 211, 102, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wa-icon svg {
+      width: 26px;
+      height: 26px;
+      color: #25d366;
+    }
+
+    .wa-title {
+      font-family: 'Archivo', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .wa-sub {
+      font-size: 0.75rem;
+      color: rgba(250, 250, 250, 0.45);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: #070708;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.5rem;
+      border-radius: 9999px;
+      transition: filter 0.25s, transform 0.2s;
+    }
+
+    .wa-btn:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+    .avail-card {
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avail-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      animation: avail-pulse 2s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes avail-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+      }
+
+      50% {
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+      }
+    }
+
+    .avail-text {
+      font-size: 0.8rem;
+      line-height: 1.5;
+    }
+
+    .avail-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .avail-text span {
+      color: rgba(250, 250, 250, 0.45);
+      font-size: 0.72rem;
+    }
+
+    @media(max-width:900px) {
+      .contact-main {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function () { emailjs.init({ publicKey: "hhHrqGphPkl0eiFkO" }); })();
+  </script>
+</head>
+
+<body>
+  <canvas id="particle-canvas"></canvas>
+  <div class="scroll-bar"></div>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-logo">
+      <svg class="nav-logo-icon" viewBox="0 0 1078 1078" fill="none">
+        <rect x="3" y="3" width="1072" height="1072" rx="100" stroke="#D4AF37" stroke-width="8" fill="transparent" />
+        <path fill="#FAFAFA"
+          d="M282.19,177.56l-55.04,629.16h224.27c71.6,0,97.11-26.85,103.56-100.56l17.89-204.44c1.91-21.81-7.44-38.78-29.25-38.78h0c-21.81,0-30.61,18.91-32.52,40.71-2.7,30.82-15.21,173.81-17.9,204.62-1.91,21.81-21.13,39.48-42.94,39.48h-105.29c-21.81,0-37.94-17.68-36.03-39.48l36.48-416.96c1.91-21.81,21.13-39.48,42.94-39.48h85.02c19.21,0,36.14-15.57,37.82-34.78h0c1.91-21.81-14.22-39.48-36.03-39.48h-192.98Z" />
+        <path fill="#D4AF37"
+          d="M539.08,201.95l-17.8,203.46c-1.56,17.84,11.67,32.28,29.52,32.2h0c17.77-.07,33.39-14.52,34.9-32.29l11.05-130.11c1.51-17.82,17.21-32.29,35.03-32.29l115.8.02c17.78,0,30.94,14.42,29.38,32.2l-17.67,201.99c-1.56,17.79-17.24,32.2-35.02,32.2h-76.68c-17.79,0-33.47,14.42-35.02,32.2l-.44,5.08c-1.56,17.79,11.6,32.2,29.39,32.2h76.68c17.79,0,30.94,14.42,29.39,32.2l-21.17,241.99c-1.56,17.79,11.6,32.2,29.39,32.2h38.34l62.6-715.5h-282.62c-17.79,0-33.47,14.42-35.02,32.2Z" />
+      </svg>
+      <div class="nav-logo-text"><span class="brand">Design Alchemy</span><span class="sub">Emmanuel Oyewola</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-mute" id="mute-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+        </svg></button>
+      <a href="contact.html" class="btn-hire">Hire Me</a>
+      <button class="hamburger" id="menu-btn"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a
+      href="services.html">Services</a><a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn-primary" style="margin-top:1rem;">Get Free Audit</a>
+  </div>
+
+  <div class="contact-page">
+    <div class="contact-hero">
+      <span class="section-label reveal">05 / Contact</span>
+      <h1 class="reveal delay-1">LET'S BUILD<br><span class="accent"
+          style="background:linear-gradient(135deg,var(--gold),var(--gold-light),#C5A880);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">SOMETHING</span>
+      </h1>
+      <p class="reveal delay-2"
+        style="font-size:0.95rem;color:rgba(250,250,250,0.5);max-width:520px;line-height:1.75;font-weight:300;">Whether
+        you have a full brief or just an idea — reach out. I'll respond within 24 hours with a clear direction and
+        proposal.</p>
+    </div>
+
+    <div class="contact-main">
+      <!-- Form -->
+      <div class="reveal">
+        <div class="form-card">
+          <div class="form-title">Start Your Project</div>
+          <div class="form-sub">Fill in your details and I'll craft a custom proposal within 24 hours — completely free,
+            no commitment required.</div>
+
+          <div id="contact-form-wrap">
+            <form id="contact-form">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="name">Full Name *</label>
+                  <input type="text" id="name" name="name" required placeholder="John Adekunle">
+                </div>
+                <div class="field">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" required placeholder="john@company.com">
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="phone">Phone / WhatsApp</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+234 xxx xxx xxxx">
+                </div>
+                <div class="field">
+                  <label for="service">Service Needed *</label>
+                  <select id="service" name="service" required>
+                    <option value="" disabled selected>Select a service</option>
+                    <option>Brand Identity & Logo</option>
+                    <option>Marketing Collateral</option>
+                    <option>Social Media Design</option>
+                    <option>AI Strategy & Consulting</option>
+                    <option>Complete Brand System</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="budget">Budget Range</label>
+                  <select id="budget" name="budget">
+                    <option value="" disabled selected>Select budget</option>
+                    <option>Under ₦50,000 ($100)</option>
+                    <option>₦50,000 – ₦150,000 ($100–$250)</option>
+                    <option>₦150,000 – ₦300,000 ($250–$500)</option>
+                    <option>₦300,000+ ($500+)</option>
+                    <option>Let's Discuss</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="timeline">Timeline</label>
+                  <select id="timeline" name="timeline">
+                    <option value="" disabled selected>Select timeline</option>
+                    <option>ASAP (rush, 3–5 days)</option>
+                    <option>1–2 Weeks</option>
+                    <option>2–4 Weeks</option>
+                    <option>1+ Month</option>
+                    <option>Flexible</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-grid full">
+                <div class="field">
+                  <label for="message">Project Brief *</label>
+                  <textarea id="message" name="message" required
+                    placeholder="Tell me about your brand, what you need, and what you want to achieve…"></textarea>
+                </div>
+              </div>
+              <button type="submit" id="submit-btn" class="form-submit">
+                Send Message
+              </button>
+              <div class="form-notice">Your information is secure and will never be shared with third parties.</div>
+            </form>
+          </div>
+          <div class="form-success" id="form-success">
+            <div class="form-success-icon">✅</div>
+            <h3>Message Sent Successfully!</h3>
+            <p>I have received your project details and will be in touch within 24 hours to discuss your vision.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="contact-sidebar">
+        <!-- Availability -->
+        <div class="avail-card card reveal">
+          <div class="avail-dot"></div>
+          <div class="avail-text">
+            <strong>Currently available for new projects</strong><br>
+            <span>Response time: within 24 hours</span>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info-card card reveal delay-1">
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </div>
+            <div>
+              <div class="ci-label">Phone / WhatsApp</div>
+              <div class="ci-value">09030934645</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">oyewolaemmanuel2007<br>@gmail.com</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Abuja, Nigeria<br><span
+                  style="font-size:0.75rem;color:rgba(250,250,250,0.4);">Serving clients worldwide</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp CTA -->
+        <div class="wa-cta-card card reveal delay-2">
+          <div class="wa-icon">
+            <svg viewBox="0 0 24 24" fill="#25d366">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+            </svg>
+          </div>
+          <div class="wa-title">Chat on WhatsApp</div>
+          <div class="wa-sub">Prefer a quicker conversation? Message directly on WhatsApp for instant replies.</div>
+          <a href="https://wa.me/2349030934645?text=Hello%20Emmanuel%2C%20I%20saw%20your%20portfolio%20and%20I'd%20love%20to%20discuss%20a%20project."
+            target="_blank" class="wa-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+            </svg>
+            Message on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">Design Alchemy</div>
+          <div class="tagline">Transforming Ideas Into Reality</div>
+        </div>
+        <nav class="footer-nav">
+          <a href="index.html">Home</a><a href="about.html">About</a><a href="projects.html">Projects</a><a
+            href="services.html">Services</a><a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Design Alchemy. All rights reserved.</span>
+        <span>Abuja, Nigeria · oyewolaemmanuel2007@gmail.com</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const EMAILJS_SERVICE_ID = 'service_omtrow3';
+      const EMAILJS_TEMPLATE_ID = 'template_r8gy5ei';
+      
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value || 'Not provided';
+      const service = document.getElementById('service').value;
+      const budget = document.getElementById('budget').value || 'Not specified';
+      const timeline = document.getElementById('timeline').value || 'Not specified';
+      const message = document.getElementById('message').value;
+
+      // Disable button & show sending state
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone: phone,
+        service: service,
+        budget: budget,
+        timeline: timeline,
+        message: message,
+        to_name: 'Emmanuel Oyewola',
+        to_email: 'oyewolaemmanuel2007@gmail.com'
+      };
+
+      const txt = encodeURIComponent(
+        `*New Project Enquiry — Design Alchemy*\n\n` +
+        `*Name:* ${name}\n` +
+        `*Email:* ${email}\n` +
+        `*Phone:* ${phone}\n` +
+        `*Service:* ${service}\n` +
+        `*Budget:* ${budget}\n` +
+        `*Timeline:* ${timeline}\n\n` +
+        `*Brief:*\n${message}`
+      );
+
+      const handleSuccess = () => {
+        document.getElementById('contact-form-wrap').style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+        setTimeout(() => {
+          window.open(`https://wa.me/2349030934645?text=${txt}`, '_blank');
+        }, 1200);
+      };
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+        .then(() => {
+          handleSuccess();
+        })
+        .catch((error) => {
+          console.error('EmailJS Error:', error);
+          // Proceed with WhatsApp redirect even if email fails
+          handleSuccess();
+        });
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+
+</html>
