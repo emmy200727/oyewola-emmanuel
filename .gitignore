@@ -20,6 +20,7 @@ Desktop.ini
 # Local QA artifacts
 *-preview.png
 lighthouse-report*.json
+public/
 
 # High-resolution source artwork (optimized runtime assets are committed)
 assets/img/
