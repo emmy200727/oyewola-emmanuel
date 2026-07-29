@@ -1,0 +1,15 @@
+{
+  "name": "emmanuel-oyewola-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Conversion-focused portfolio for Emmanuel Oyewola.",
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/verify-site.mjs",
+    "build": "node scripts/verify-site.mjs",
+    "preview": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

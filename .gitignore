@@ -16,3 +16,10 @@ Desktop.ini
 # Local Agent files
 .agent/
 .gemini/
+
+# Local QA artifacts
+*-preview.png
+lighthouse-report*.json
+
+# High-resolution source artwork (optimized runtime assets are committed)
+assets/img/

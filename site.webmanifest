@@ -1,0 +1,12 @@
+{
+  "name": "Emmanuel Oyewola — Designer & Developer",
+  "short_name": "Emmanuel Oyewola",
+  "description": "Brand identity, graphic design, and front-end development portfolio.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f3ef",
+  "theme_color": "#f4f3ef",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
