@@ -9,6 +9,7 @@ const css = await readFile(path.join(root, "styles.css"), "utf8");
 const app = await readFile(path.join(root, "app.js"), "utf8");
 const galleryData = await readFile(path.join(root, "gallery-data.js"), "utf8");
 const { portfolio } = await import(`${pathToFileURL(path.join(root, "gallery-data.js")).href}?verify=${Date.now()}`);
+const { websiteProjects } = await import(`${pathToFileURL(path.join(root, "scripts", "site-data.mjs")).href}?verify=${Date.now()}`);
 const failures = [];
 
 const check = (condition, message) => {
@@ -159,11 +160,27 @@ const requiredFiles = [
 ];
 
 for (const relativeFile of new Set(requiredFiles)) {
-  try {
-    await access(path.join(root, relativeFile), constants.R_OK);
-  } catch {
-    failures.push(`Referenced file does not exist: ${relativeFile}`);
+  const normalized = relativeFile.replace(/^[/\\]+/, "");
+  if (normalized.startsWith("work/")) {
+    const slug = normalized.slice("work/".length).replace(/\.html$/, "");
+    const projectSlugs = new Set([...websiteProjects.map((project) => project.slug), ...portfolio.clients.map((client) => client.id)]);
+    check(projectSlugs.has(slug), `Unknown generated project route: ${relativeFile}`);
+    continue;
   }
+  const candidates = normalized
+    ? [normalized, `${normalized}.html`]
+    : ["index.html"];
+  let found = false;
+  for (const candidate of candidates) {
+    try {
+      await access(path.join(root, candidate), constants.R_OK);
+      found = true;
+      break;
+    } catch {
+      // Try the clean-URL HTML candidate before reporting the reference.
+    }
+  }
+  if (!found) failures.push(`Referenced file does not exist: ${relativeFile}`);
 }
 
 if (failures.length) {

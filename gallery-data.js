@@ -695,7 +695,7 @@ export const portfolio = {
                                         "thumbnail":  "assets/optimized/portfolio/datalab/001-thumb.jpg",
                                         "width":  640,
                                         "height":  427,
-                                        "alt":  "Datalab, Da Recovered"
+                                        "alt":  "Datalab global data analyst and AI specialist campaign graphic"
                                     },
                         "images":  [
                                        {
@@ -703,7 +703,7 @@ export const portfolio = {
                                            "thumbnail":  "assets/optimized/portfolio/datalab/001-thumb.jpg",
                                            "width":  640,
                                            "height":  427,
-                                           "alt":  "Datalab, Da Recovered"
+                                           "alt":  "Datalab global data analyst and AI specialist campaign graphic"
                                        },
                                        {
                                            "src":  "assets/optimized/portfolio/datalab/002.jpg",
@@ -1008,7 +1008,7 @@ export const portfolio = {
                                         "thumbnail":  "assets/optimized/portfolio/jimmy-gadgets-store/001-thumb.jpg",
                                         "width":  736,
                                         "height":  981,
-                                        "alt":  "Jimmy Gadgets, Call Of Duty Mobile Tournament Poster #Cod…"
+                                        "alt":  "Jimmy Gadgets Call of Duty Mobile accessories and COD points poster"
                                     },
                         "images":  [
                                        {
@@ -1016,7 +1016,7 @@ export const portfolio = {
                                            "thumbnail":  "assets/optimized/portfolio/jimmy-gadgets-store/001-thumb.jpg",
                                            "width":  736,
                                            "height":  981,
-                                           "alt":  "Jimmy Gadgets, Call Of Duty Mobile Tournament Poster #Cod…"
+                                           "alt":  "Jimmy Gadgets Call of Duty Mobile accessories and COD points poster"
                                        },
                                        {
                                            "src":  "assets/optimized/portfolio/jimmy-gadgets-store/002.jpg",
@@ -1177,11 +1177,11 @@ export const portfolio = {
                         "imageCount":  13,
                         "directImageCount":  13,
                         "preview":  {
-                                        "src":  "assets/optimized/portfolio/rivo-rider/001.jpg",
-                                        "thumbnail":  "assets/optimized/portfolio/rivo-rider/001-thumb.jpg",
-                                        "width":  1000,
-                                        "height":  1000,
-                                        "alt":  "Rivo Rider, Img 20260422 Wa0001"
+                                        "src":  "assets/optimized/portfolio/rivo-rider/002.jpg",
+                                        "thumbnail":  "assets/optimized/portfolio/rivo-rider/002-thumb.jpg",
+                                        "width":  1024,
+                                        "height":  1024,
+                                        "alt":  "Rivo Rider black, white and yellow mobility brand logo"
                                     },
                         "images":  [
                                        {
@@ -1189,14 +1189,14 @@ export const portfolio = {
                                            "thumbnail":  "assets/optimized/portfolio/rivo-rider/001-thumb.jpg",
                                            "width":  1000,
                                            "height":  1000,
-                                           "alt":  "Rivo Rider, Img 20260422 Wa0001"
+                                           "alt":  "Rivo Rider subtle white logo pattern"
                                        },
                                        {
                                            "src":  "assets/optimized/portfolio/rivo-rider/002.jpg",
                                            "thumbnail":  "assets/optimized/portfolio/rivo-rider/002-thumb.jpg",
                                            "width":  1024,
                                            "height":  1024,
-                                           "alt":  "Rivo Rider, Revo Rider"
+                                           "alt":  "Rivo Rider black, white and yellow mobility brand logo"
                                        },
                                        {
                                            "src":  "assets/optimized/portfolio/rivo-rider/003.jpg",

@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://emmy200727.github.io/oyewola-emmanuel/</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>1.0</priority><image:image><image:loc>https://oyewola-emmanuel-ivory.vercel.app/assets/optimized/emmanuel-oyewola-portfolio-social.png</image:loc><image:caption>Emmanuel Oyewola design portfolio</image:caption></image:image></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/about</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/services</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/projects</loc><lastmod>2026-07-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/contact</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/trinity-abode</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/waski-gadgets</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/lapeq-website</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/blake-resort</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/lapeq</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/aventrox</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/datalab</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/hue2max</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/jimmy-gadgets-store</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/oby-s-kitchen</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/rivo-rider</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/veroshun</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/yrn-accommodation</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://oyewola-emmanuel-ivory.vercel.app/work/additional-work</loc><lastmod>2026-07-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>

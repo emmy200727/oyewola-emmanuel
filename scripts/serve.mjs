@@ -4,7 +4,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createGzip } from "node:zlib";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const workspaceRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const builtRoot = path.join(workspaceRoot, "public");
+const root = existsSync(path.join(builtRoot, "index.html")) ? builtRoot : workspaceRoot;
 const port = Number(process.env.PORT || 4173);
 const types = {
   ".css": "text/css; charset=utf-8",
@@ -21,11 +23,21 @@ const types = {
 createServer((request, response) => {
   const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
   const requested = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
-  const file = path.resolve(root, requested);
+  const requestedFile = path.resolve(root, requested);
+  const cleanUrlFile = path.resolve(root, `${requested}.html`);
+  const file = existsSync(requestedFile) && statSync(requestedFile).isFile()
+    ? requestedFile
+    : cleanUrlFile;
 
   if (!file.startsWith(root) || !existsSync(file) || !statSync(file).isFile()) {
-    response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
-    response.end("Not found");
+    const notFound = path.join(root, "404.html");
+    if (existsSync(notFound)) {
+      response.writeHead(404, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-cache" });
+      createReadStream(notFound).pipe(response);
+    } else {
+      response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+      response.end("Not found");
+    }
     return;
   }
 
@@ -40,5 +52,5 @@ createServer((request, response) => {
   if (canCompress && acceptsGzip) stream.pipe(createGzip()).pipe(response);
   else stream.pipe(response);
 }).listen(port, "127.0.0.1", () => {
-  console.log(`Portfolio preview running at http://127.0.0.1:${port}`);
+  console.log(`Portfolio preview running at http://127.0.0.1:${port} from ${path.relative(workspaceRoot, root) || "."}/`);
 });

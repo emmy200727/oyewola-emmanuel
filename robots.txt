@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emmy200727.github.io/oyewola-emmanuel/sitemap.xml
+Sitemap: https://oyewola-emmanuel-ivory.vercel.app/sitemap.xml

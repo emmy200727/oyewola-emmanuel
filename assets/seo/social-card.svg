@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Emmanuel Oyewola design portfolio</title>
+  <desc id="description">Social preview for Emmanuel Oyewola, brand identity, graphic and UI/UX designer.</desc>
+  <rect width="1200" height="630" fill="#f4f3ef"/>
+  <circle cx="1070" cy="-30" r="330" fill="#3155ed"/>
+  <circle cx="1060" cy="30" r="230" fill="none" stroke="#f4f3ef" stroke-opacity=".25" stroke-width="2"/>
+  <path d="M0 535C210 445 351 581 552 496c181-77 329-21 470 42 64 28 121 41 178 38v54H0Z" fill="#e9e8e2"/>
+  <g transform="translate(78 74)">
+    <circle cx="35" cy="35" r="35" fill="#111318"/>
+    <text x="35" y="42" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="700" text-anchor="middle">EO</text>
+    <text x="92" y="29" fill="#111318" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700">EMMANUEL OYEWOLA</text>
+    <text x="92" y="55" fill="#4f535d" font-family="Arial, Helvetica, sans-serif" font-size="16" letter-spacing="2">DESIGN ALCHEMY</text>
+  </g>
+  <text x="78" y="268" fill="#111318" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-3">Design that makes</text>
+  <text x="78" y="350" fill="#111318" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700" letter-spacing="-3">good work look credible.</text>
+  <text x="82" y="429" fill="#3155ed" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" letter-spacing="2">BRAND IDENTITY · GRAPHIC DESIGN · UI/UX</text>
+  <text x="82" y="548" fill="#4f535d" font-family="Arial, Helvetica, sans-serif" font-size="21">Abuja, Nigeria · Working worldwide</text>
+</svg>
