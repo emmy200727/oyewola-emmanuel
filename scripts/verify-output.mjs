@@ -142,7 +142,11 @@ for (const icon of manifest.icons || []) {
 }
 
 const config = JSON.parse(await readFile(path.join(root, "vercel.json"), "utf8"));
-check(config.cleanUrls === true && config.trailingSlash === false, "Vercel clean URL policy is not canonicalized.");
+check(config.cleanUrls === false && config.trailingSlash === false, "Vercel URL policy must preserve the Google verification filename.");
+const rewriteSources = new Set((config.rewrites || []).map(({ source }) => source));
+for (const route of ["/about", "/services", "/projects", "/contact", "/work/:slug"]) {
+  check(rewriteSources.has(route), `Vercel rewrite is missing for ${route}.`);
+}
 
 const outputRootFiles = await readdir(output);
 check(outputRootFiles.includes("robots.txt") && outputRootFiles.includes("sitemap.xml"), "Crawl-control files are missing from build output.");
