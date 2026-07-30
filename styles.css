@@ -45,6 +45,10 @@ body.menu-open {
   overflow: hidden;
 }
 
+body.dialog-open {
+  overflow: hidden;
+}
+
 img,
 svg {
   display: block;
@@ -640,6 +644,13 @@ h3 {
   color: var(--ink);
 }
 
+.tab-loading {
+  padding-block: 1.05rem;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 .gallery-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -661,14 +672,129 @@ h3 {
   min-height: 16rem;
 }
 
+.folder-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 0.5rem 1.8rem rgba(17, 19, 24, 0.04);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.folder-card:hover {
+  transform: translateY(-0.3rem);
+  border-color: #b8b7b1;
+  box-shadow: 0 1.25rem 2.8rem rgba(17, 19, 24, 0.11);
+}
+
+.folder-preview {
+  overflow: hidden;
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--paper-deep);
+}
+
+.folder-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92);
+  transition: transform 400ms ease, filter 300ms ease;
+}
+
+.folder-card:hover .folder-preview img {
+  transform: scale(1.025);
+  filter: saturate(1);
+}
+
+.folder-overlay {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  display: grid;
+  width: 3rem;
+  height: 3rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.6rem;
+  background: rgba(17, 19, 24, 0.82);
+  color: var(--white);
+  backdrop-filter: blur(12px);
+}
+
+.folder-icon {
+  width: 1.6rem;
+}
+
+.folder-icon svg {
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
+}
+
+.folder-meta {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.2rem 1.25rem;
+}
+
+.folder-meta > span:first-child {
+  display: grid;
+  min-width: 0;
+  gap: 0.1rem;
+}
+
+.folder-meta strong {
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.folder-meta small {
+  color: var(--ink-soft);
+  font-size: 0.68rem;
+}
+
+.folder-arrow {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent);
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.folder-card:hover .folder-arrow {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--white);
+}
+
 .gallery-item {
   position: relative;
   overflow: hidden;
   display: grid;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1;
   padding: 0;
   place-items: center;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.45rem;
   background: #e5e4df;
   cursor: zoom-in;
 }
@@ -684,8 +810,7 @@ h3 {
   transform: scale(1.015);
 }
 
-.gallery-item::after {
-  content: "View";
+.gallery-item-label {
   position: absolute;
   right: 0.8rem;
   bottom: 0.8rem;
@@ -696,12 +821,14 @@ h3 {
   font-size: 0.63rem;
   font-weight: 700;
   opacity: 0;
-  transition: opacity 150ms ease;
+  transform: translateY(0.25rem);
+  transition: opacity 150ms ease, transform 150ms ease;
 }
 
-.gallery-item:hover::after,
-.gallery-item:focus-visible::after {
+.gallery-item:hover .gallery-item-label,
+.gallery-item:focus-visible .gallery-item-label {
   opacity: 1;
+  transform: none;
 }
 
 .gallery-loading,
@@ -712,6 +839,130 @@ h3 {
   place-items: center;
   color: var(--ink-soft);
   font-size: 0.85rem;
+}
+
+.portfolio-browser {
+  width: 100vw;
+  max-width: none;
+  height: 100svh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.portfolio-browser::backdrop {
+  background: rgba(8, 9, 12, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.portfolio-browser[open] {
+  animation: dialog-enter 240ms ease both;
+}
+
+.portfolio-browser-shell {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.portfolio-browser-header {
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
+  align-items: center;
+  gap: 2rem;
+  min-height: 6.5rem;
+  padding: 1rem var(--gutter);
+  border-bottom: 1px solid rgba(215, 214, 208, 0.85);
+  background: rgba(244, 243, 239, 0.92);
+  backdrop-filter: blur(18px);
+}
+
+.portfolio-browser-header > div {
+  text-align: center;
+}
+
+.portfolio-browser-header h2 {
+  margin-top: 0.12rem;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.portfolio-browser-header button {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 100vmax;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 750;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.portfolio-browser-header button:hover {
+  border-color: var(--ink);
+  background: var(--white);
+}
+
+.browser-back {
+  justify-self: start;
+}
+
+.browser-close {
+  justify-self: end;
+}
+
+.portfolio-browser-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 38rem) auto;
+  justify-content: space-between;
+  gap: 2rem;
+  width: min(100%, calc(var(--container) + (var(--gutter) * 2)));
+  margin-inline: auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) var(--gutter) clamp(2rem, 4vw, 3rem);
+}
+
+.portfolio-browser-intro p:first-child {
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+}
+
+.portfolio-browser-intro p:last-child {
+  align-self: start;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 100vmax;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.browser-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  width: min(100%, calc(var(--container) + (var(--gutter) * 2)));
+  margin-inline: auto;
+  padding: 0 var(--gutter) clamp(4rem, 8vw, 7rem);
+}
+
+.browser-gallery .gallery-item {
+  background: var(--paper-deep);
+}
+
+@keyframes dialog-enter {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: none; }
 }
 
 .services {
@@ -1057,76 +1308,135 @@ h3 {
 }
 
 .lightbox {
-  width: min(94vw, 76rem);
+  width: 100vw;
   max-width: none;
-  height: min(92svh, 58rem);
+  height: 100svh;
   max-height: none;
-  padding: 3.5rem 4.5rem 2rem;
+  margin: 0;
+  padding: 4.75rem clamp(1rem, 3vw, 3rem) 1.5rem;
   border: 0;
-  border-radius: 0.5rem;
-  background: #101216;
+  background: #0c0e12;
   color: var(--white);
 }
 
 .lightbox::backdrop {
-  background: rgba(8, 9, 12, 0.86);
+  background: rgba(8, 9, 12, 0.94);
+  backdrop-filter: blur(10px);
 }
 
 .lightbox[open] {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 3rem minmax(0, 1fr) 3rem;
   align-items: center;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  animation: lightbox-enter 180ms ease both;
+}
+
+.lightbox-toolbar {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  min-height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1rem, 3vw, 3rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(12, 14, 18, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.lightbox-toolbar p {
+  color: #c7cad1;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .lightbox figure {
   display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
   min-width: 0;
   height: 100%;
   align-items: center;
   justify-items: center;
+  gap: 0.85rem;
+}
+
+.lightbox-stage {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  place-items: center;
+  overflow: hidden;
 }
 
 .lightbox figure img {
+  width: auto;
+  height: auto;
   max-width: 100%;
-  max-height: calc(92svh - 8rem);
+  max-height: calc(100svh - 8.5rem);
   object-fit: contain;
+  opacity: 0;
+  transform: scale(0.992);
+  transition: opacity 180ms ease, transform 240ms ease;
+}
+
+.lightbox figure img.is-loaded {
+  opacity: 1;
+  transform: none;
 }
 
 .lightbox figcaption {
   align-self: end;
   color: #b7bac2;
   font-size: 0.75rem;
+  text-align: center;
 }
 
 .lightbox button {
   border: 1px solid #343840;
-  border-radius: 50%;
   background: #1a1d23;
   color: var(--white);
   cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.lightbox button:hover {
+  border-color: #6c7280;
+  background: #242832;
 }
 
 .lightbox-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  font-size: 1.35rem;
+  display: inline-flex;
+  min-height: 2.65rem;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 100vmax;
+  font-size: 0.72rem;
+  font-weight: 750;
 }
 
 .lightbox-nav {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
   font-size: 1rem;
 }
 
-.lightbox-prev {
-  margin-right: 1rem;
+.lightbox-nav:hover {
+  transform: scale(1.04);
 }
 
-.lightbox-next {
-  margin-left: 1rem;
+@keyframes lightbox-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .js .reveal {
@@ -1236,6 +1546,10 @@ h3 {
     grid-row: 2;
     justify-self: start;
   }
+
+  .browser-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -1344,6 +1658,39 @@ h3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .portfolio-browser-header {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.6rem;
+    min-height: 5.25rem;
+    padding: 0.65rem var(--gutter);
+  }
+
+  .portfolio-browser-header h2 {
+    overflow: hidden;
+    font-size: 1rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .portfolio-browser-header .project-number {
+    display: none;
+  }
+
+  .portfolio-browser-header button {
+    min-height: 2.5rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .portfolio-browser-intro {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 2rem;
+  }
+
+  .portfolio-browser-intro p:last-child {
+    justify-self: start;
+  }
+
   .service-grid,
   .principles {
     grid-template-columns: 1fr;
@@ -1416,7 +1763,7 @@ h3 {
   .lightbox {
     width: 100vw;
     height: 100svh;
-    padding: 4.5rem 1rem 4rem;
+    padding: 4.5rem 0.75rem 1rem;
     border-radius: 0;
   }
 
@@ -1428,6 +1775,10 @@ h3 {
   .lightbox figure {
     grid-column: 1 / -1;
     grid-row: 1;
+  }
+
+  .lightbox figure img {
+    max-height: calc(100svh - 11rem);
   }
 
   .lightbox-nav {
@@ -1459,6 +1810,10 @@ h3 {
   }
 
   .project-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .browser-gallery {
     grid-template-columns: 1fr;
   }
 
