@@ -16,6 +16,7 @@ const publicFiles = [
   "contact.html",
   "favicon.svg",
   "favicon-32x32.png",
+  "googlef6ec1ac80bd5ba22.html",
   "gallery-data.js",
   "apple-touch-icon.png",
   "icon-192.png",
